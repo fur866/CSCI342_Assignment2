@@ -7,16 +7,12 @@ import android.provider.BaseColumns;
  */
 public class CollectionContract {
 
-    private String name;
+    public CollectionContract()
+    {}
 
-    CollectionContract(String name)
-    {
-        this.name = name;
-    }
+    public static abstract class CollectionEntry implements BaseColumns {
 
-    public abstract class Clipping implements BaseColumns
-    {
-        public String TABLE_NAME = "Collection";
-        public String COLUMN_NAME_NAME = name;
+        public static final String TABLE_NAME = "Collection";
+        public static final String COLUMN_NAME_COLLECTION_NAME = "Name";
     }
 }
