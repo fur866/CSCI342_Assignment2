@@ -14,5 +14,6 @@ public class CollectionContract {
 
         public static final String TABLE_NAME = "Collection";
         public static final String COLUMN_NAME_COLLECTION_NAME = "Name";
+        public static final String COLUMN_NAME_COLLECTION_ID = "id";
     }
 }
