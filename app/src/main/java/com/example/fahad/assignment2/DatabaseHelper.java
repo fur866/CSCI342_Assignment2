@@ -7,7 +7,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class ScrapbookModel extends SQLiteOpenHelper{
+public class DatabaseHelper extends SQLiteOpenHelper{
 
     public static final String DATABASE_NAME = "scrapbookmodel.db";
     private static final int DATABASE_VERSION = 1;
@@ -22,7 +22,7 @@ public class ScrapbookModel extends SQLiteOpenHelper{
             + ClippingContract.ClippingEntry.COLUMN_NAME_NOTES + " text not null, "
             + ClippingContract.ClippingEntry.COLUMN_NAME_DATE_CREATED + " text not null) ";
 
-    public ScrapbookModel(Context context){
+    public DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
