@@ -9,12 +9,10 @@ public class Collection {
 
     private String name;
     private long ID;
-    private int imageCounter;
     ArrayList<Clipping> clippings;
 
     Collection(String name)
     {
-        this.imageCounter = 0;
         this.name = name;
     }
 
@@ -36,5 +34,10 @@ public class Collection {
     public ArrayList<Clipping> getClipping()
     {
         return this.clippings;
+    }
+
+    public String getName()
+    {
+        return this.name;
     }
 }

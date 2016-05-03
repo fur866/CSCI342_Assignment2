@@ -14,8 +14,23 @@ public class Clipping {
     private Drawable image;
     private String path;
     private String dateCreated;
-    private int ID;
+    private long ID;
     private String collectionName;
+
+    Clipping(String notes, Drawable image)
+    {
+        this.notes = notes;
+        this.image = image;
+        this.dateCreated = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+    }
+
+    Clipping(String notes, Drawable image, String dateCreated,long ID)
+    {
+        this.notes = notes;
+        this.image = image;
+        this.dateCreated = dateCreated;
+        this.ID = ID;
+    }
 
     Clipping(String notes, Drawable image, String collectionName)
     {
@@ -25,7 +40,7 @@ public class Clipping {
         this.collectionName = collectionName;
     }
 
-    Clipping(String notes, Drawable image, String collectionName, String dateCreated,int ID)
+    Clipping(String notes, Drawable image, String collectionName, String dateCreated,long ID)
     {
         this.notes = notes;
         this.image = image;
@@ -39,8 +54,27 @@ public class Clipping {
         this.path = path;
     }
 
+    public void setID(long ID) {
+        this.ID = ID;
+    }
+
+    public long getID()
+    {
+        return this.ID;
+    }
+
     public String getPath()
     {
         return this.path;
+    }
+
+    public String getNotes()
+    {
+        return this.notes;
+    }
+
+    public String getDateCreated()
+    {
+        return this.dateCreated;
     }
 }

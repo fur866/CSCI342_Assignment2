@@ -14,7 +14,7 @@ public class ClippingContract {
 
         public static final String TABLE_NAME = "Clipping";
         public static final String COLUMN_NAME_NOTES = "Notes";
-        public static final String COLUMN_NAME_DATE_CREATED = "Date Created";
+        public static final String COLUMN_NAME_DATE_CREATED = "DateCreated";
         public static final String COLUMN_NAME_CLIPPING_ID = "id";
         public static final String COLUMN_NAME_COLLECTION_NAME = "cName";
         public static final String COLUMN_NAME_PATH = "path";
