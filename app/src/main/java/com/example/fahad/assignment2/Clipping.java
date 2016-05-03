@@ -12,6 +12,7 @@ public class Clipping {
 
     protected String notes;
     private Drawable image;
+    private String path;
     private String dateCreated;
 
     Clipping(String notes, Drawable image)
@@ -21,5 +22,8 @@ public class Clipping {
         this.dateCreated = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
     }
 
-
+    public void setPath(String path)
+    {
+        this.path = path;
+    }
 }
