@@ -19,7 +19,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     private static final String CLIPPING_CREATE = "create table " + ClippingContract.ClippingEntry.TABLE_NAME + " ("
             + ClippingContract.ClippingEntry.COLUMN_NAME_CLIPPING_ID + " integer primary key autoincrement, "
+            + ClippingContract.ClippingEntry.COLUMN_NAME_COLLECTION_NAME + " text not null, "
             + ClippingContract.ClippingEntry.COLUMN_NAME_NOTES + " text not null, "
+            + ClippingContract.ClippingEntry.COLUMN_NAME_PATH + " text not null, "
             + ClippingContract.ClippingEntry.COLUMN_NAME_DATE_CREATED + " text not null) ";
 
     public DatabaseHelper(Context context){
