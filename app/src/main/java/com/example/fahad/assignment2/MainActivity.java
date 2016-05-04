@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //get Scrapbook model instance
-        ScrapbookModel scrapbookModel = new ScrapbookModel(getApplicationContext());
+       /* ScrapbookModel scrapbookModel = new ScrapbookModel(getApplicationContext());
 
         //creating collections
         Collection c1 = new Collection("A");
@@ -79,6 +79,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d("HERE notes3",clipping.getNotes());
             Log.d("HERE date3",clipping.getDateCreated());
             Log.d("HERE path3",clipping.getPath());
-        }
+        }*/
     }
 }
