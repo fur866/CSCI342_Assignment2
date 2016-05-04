@@ -1,4 +1,4 @@
-package com.example.fahad.assignment2;
+package com.example.fahad.assignment2.Database.ContractClasses;
 
 import android.provider.BaseColumns;
 

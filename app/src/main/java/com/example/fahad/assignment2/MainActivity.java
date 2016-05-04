@@ -5,6 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.fahad.assignment2.Database.DataClasses.Clipping;
+import com.example.fahad.assignment2.Database.DataClasses.Collection;
+import com.example.fahad.assignment2.Database.HelperClasses.DatabaseHelper;
+import com.example.fahad.assignment2.Database.ConvenienceClasses.ScrapbookModel;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

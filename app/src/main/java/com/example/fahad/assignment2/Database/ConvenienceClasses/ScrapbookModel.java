@@ -1,4 +1,4 @@
-package com.example.fahad.assignment2;
+package com.example.fahad.assignment2.Database.ConvenienceClasses;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,22 +9,20 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
-import java.io.BufferedInputStream;
+import com.example.fahad.assignment2.Database.ContractClasses.ClippingContract;
+import com.example.fahad.assignment2.Database.ContractClasses.CollectionContract;
+import com.example.fahad.assignment2.Database.DataClasses.Clipping;
+import com.example.fahad.assignment2.Database.DataClasses.Collection;
+import com.example.fahad.assignment2.Database.HelperClasses.DatabaseHelper;
+
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by Fahad on 3/05/2016.
@@ -34,7 +32,7 @@ public class ScrapbookModel {
     private DatabaseHelper dbHelper;
     private Context context;
 
-    ScrapbookModel(Context context)
+    public ScrapbookModel(Context context)
     {
         this.context = context;
         this.dbHelper = new DatabaseHelper(context);
