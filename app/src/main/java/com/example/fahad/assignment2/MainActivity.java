@@ -1,5 +1,7 @@
 package com.example.fahad.assignment2;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import com.example.fahad.assignment2.Database.DataClasses.Clipping;
 import com.example.fahad.assignment2.Database.DataClasses.Collection;
 import com.example.fahad.assignment2.Database.HelperClasses.DatabaseHelper;
 import com.example.fahad.assignment2.Database.ConvenienceClasses.ScrapbookModel;
+import com.example.fahad.assignment2.Fragments.CollectionListFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,9 +21,35 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getApplicationContext().deleteDatabase(DatabaseHelper.DATABASE_NAME);
+        //getApplicationContext().deleteDatabase(DatabaseHelper.DATABASE_NAME);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ScrapbookModel scrapbookModel = new ScrapbookModel(getApplicationContext());
+        Collection c1 = new Collection("A");
+        Collection c2 = new Collection("B");
+        c1.setID(scrapbookModel.createCollection(c1.getName()));
+        c2.setID(scrapbookModel.createCollection(c2.getName()));
+
+        ArrayList<Collection> collections = scrapbookModel.getCollections();
+        ArrayList<String> names = new ArrayList<String>();
+        Log.d("here",String.valueOf(collections.size()));
+        for(Collection collection : collections)
+        {
+            Log.d("here",collection.getName());
+            names.add(collection.getName());
+        }
+
+        Bundle bundle = new Bundle();
+       // bundle.putSerializable("Collections",collections);
+        bundle.putStringArrayList("Collections",names);
+        CollectionListFragment collectionList = new CollectionListFragment();
+        collectionList.setArguments(bundle);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frames, collectionList);
+        fragmentTransaction.commit();
 
 
         //get Scrapbook model instance
@@ -80,5 +109,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d("HERE date3",clipping.getDateCreated());
             Log.d("HERE path3",clipping.getPath());
         }*/
+        getApplicationContext().deleteDatabase(DatabaseHelper.DATABASE_NAME);
     }
 }

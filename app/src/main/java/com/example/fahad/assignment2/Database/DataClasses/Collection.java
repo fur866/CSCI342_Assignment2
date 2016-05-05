@@ -1,11 +1,12 @@
 package com.example.fahad.assignment2.Database.DataClasses;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Fahad on 2/05/2016.
  */
-public class Collection {
+public class Collection implements Serializable{
 
     private String name;
     private long ID;
