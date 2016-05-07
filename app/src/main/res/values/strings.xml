@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Assignment 2</string>
+    <string name="add_collection_hint">Collection Name...</string>
 </resources>
