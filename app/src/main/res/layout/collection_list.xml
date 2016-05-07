@@ -7,19 +7,19 @@
         android:orientation="horizontal" android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right">
-        <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete Button"
-        android:id="@+id/deleteButton"
-            android:layout_margin="5px" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add New Collection"
             android:id="@+id/addButton"
-            android:layout_margin="5px" />
+            android:layout_margin="5px"
+            android:background="#3fcf54"
+            android:textColor="#ffffff"
+            android:paddingLeft="10px"
+            android:paddingRight="10px"
+            android:typeface="serif"
+            android:textSize="40px" />
     </LinearLayout>
 
 
@@ -27,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:padding="10px" />
 
 </LinearLayout>

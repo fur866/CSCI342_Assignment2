@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ScrapbookModel scrapbookModel;
+    CollectionListFragment collectionList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //getApplicationContext().deleteDatabase(DatabaseHelper.DATABASE_NAME);
@@ -100,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
     {
         Bundle bundle = new Bundle();
         bundle.putStringArrayList("Collections",names);
-        CollectionListFragment collectionList = new CollectionListFragment();
-        collectionList.setArguments(bundle);
+        this.collectionList = new CollectionListFragment();
+        this.collectionList.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

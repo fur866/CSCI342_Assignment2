@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:weightSum="1">
 
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@android:id/text1"
-    android:layout_height="?android:attr/listPreferredItemHeight"
-    android:layout_width="fill_parent"
-    android:textSize="20sp"
-    android:paddingLeft="6dip"
-    android:paddingRight="6dip"
-    android:gravity="center" />
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@android:id/text1"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="0.8"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Delete"
+            android:id="@+id/deleteCollectionButton"
+            android:textColor="#ffffff"
+            android:textStyle="italic"
+            android:background="#ff0000"
+            android:layout_weight="0.2" />
+
+
+    </LinearLayout>
