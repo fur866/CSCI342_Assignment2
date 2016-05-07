@@ -16,18 +16,20 @@
             android:layout_margin="5px"
             android:background="#3fcf54"
             android:textColor="#ffffff"
-            android:paddingLeft="10px"
             android:paddingRight="10px"
             android:typeface="serif"
-            android:textSize="40px" />
+            android:textSize="40px"
+            android:layout_marginTop="15px" />
     </LinearLayout>
 
 
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/listView"
         android:textAlignment="center"
-        android:padding="10px" />
+        android:padding="20px"
+        android:layout_marginTop="25px"
+        android:paddingBottom="35px" />
 
 </LinearLayout>

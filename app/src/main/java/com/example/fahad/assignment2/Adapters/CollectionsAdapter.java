@@ -49,11 +49,11 @@ public class CollectionsAdapter extends ArrayAdapter<String> {
 
         final String collectionName = getItem(position);
         first.setText(collectionName);
-//        first.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        first.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                fragementList.gotToACollection(collectionName);
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
