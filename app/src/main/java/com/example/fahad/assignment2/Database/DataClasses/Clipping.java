@@ -2,13 +2,14 @@ package com.example.fahad.assignment2.Database.DataClasses;
 
 import android.graphics.drawable.Drawable;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Created by Fahad on 2/05/2016.
  */
-public class Clipping {
+public class Clipping implements Serializable{
 
     protected String notes;
     private Drawable image;
@@ -76,5 +77,10 @@ public class Clipping {
     public String getDateCreated()
     {
         return this.dateCreated;
+    }
+
+    public Drawable getImage()
+    {
+            return this.image;
     }
 }

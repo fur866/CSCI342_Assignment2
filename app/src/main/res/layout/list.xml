@@ -4,6 +4,17 @@
     android:layout_height="match_parent">
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:background="#c7c7c7"
+        android:textAlignment="center"
+        android:textSize="60px"
+        android:textStyle="bold|italic"
+        android:typeface="serif"
+        android:layout_marginBottom="20px" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,12 +23,11 @@
         android:padding="20px"
         android:layout_marginTop="5px"
         android:paddingBottom="35px"
-        android:layout_weight="0.9" />
+        android:layout_weight="0.85" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add New Collection"
         android:id="@+id/addButton"
         android:background="#3fcf54"
         android:textColor="#ffffff"

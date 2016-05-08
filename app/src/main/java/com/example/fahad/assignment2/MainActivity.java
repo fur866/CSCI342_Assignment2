@@ -2,24 +2,38 @@ package com.example.fahad.assignment2;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TabHost;
+import android.widget.TextView;
+
+import com.example.fahad.assignment2.Database.DataClasses.Clipping;
 import com.example.fahad.assignment2.Database.DataClasses.Collection;
 import com.example.fahad.assignment2.Database.HelperClasses.DatabaseHelper;
 import com.example.fahad.assignment2.Database.ConvenienceClasses.ScrapbookModel;
+import com.example.fahad.assignment2.Fragments.ClippingListFragment;
 import com.example.fahad.assignment2.Fragments.CollectionListFragment;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
     ScrapbookModel scrapbookModel;
     CollectionListFragment collectionList;
+    ClippingListFragment clippingList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //getApplicationContext().deleteDatabase(DatabaseHelper.DATABASE_NAME);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        this.collectionList = new CollectionListFragment();
+        this.clippingList = new ClippingListFragment();
 
         this.scrapbookModel = new ScrapbookModel(getApplicationContext());
         Collection c1 = new Collection("A");
@@ -36,7 +50,14 @@ public class MainActivity extends AppCompatActivity {
             names.add(collection.getName());
         }
 
-        addCollectionListFragment(names);
+        Clipping cp1 = scrapbookModel.createClipping("1 foo",new SimpleDateFormat("yyyy-MM-dd").format(new Date()),ContextCompat.getDrawable(this,R.drawable.baldhills));
+        Clipping cp2 = scrapbookModel.createClipping("2 foo",new SimpleDateFormat("yyyy-MM-dd").format(new Date()),ContextCompat.getDrawable(this,R.drawable.lakes));
+        Clipping cp3 = scrapbookModel.createClipping("3 bar",new SimpleDateFormat("yyyy-MM-dd").format(new Date()), ContextCompat.getDrawable(this,R.drawable.cathedrals));
+
+        scrapbookModel.assignClipping(cp1.getID(),c1.getName());
+        scrapbookModel.assignClipping(cp2.getID(),c1.getName());
+
+        this.addCollectionListFragment(names);
         //get Scrapbook model instance
        /* ScrapbookModel scrapbookModel = new ScrapbookModel(getApplicationContext());
 
@@ -101,12 +122,29 @@ public class MainActivity extends AppCompatActivity {
     {
         Bundle bundle = new Bundle();
         bundle.putStringArrayList("Collections",names);
-        this.collectionList = new CollectionListFragment();
         this.collectionList.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frames, collectionList);
+        fragmentTransaction.commit();
+    }
+
+    public void addClippingsFragment(String parentCollection)
+    {
+        Bundle bundle = new Bundle();
+        if(parentCollection != "All Clippings") {
+            bundle.putSerializable("Clippings", this.scrapbookModel.getClippingsByCollection(parentCollection));
+        }
+        else{
+            bundle.putSerializable("Clippings", this.scrapbookModel.getClippings());
+        }
+        bundle.putString("parentCollection",parentCollection);
+        this.clippingList.setArguments(bundle);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frames, clippingList);
         fragmentTransaction.commit();
     }
 }

@@ -1,27 +1,30 @@
 package com.example.fahad.assignment2.Adapters;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.fahad.assignment2.Fragments.CollectionListFragment;
+import com.example.fahad.assignment2.Database.DataClasses.Clipping;
+import com.example.fahad.assignment2.Fragments.ClippingListFragment;
 import com.example.fahad.assignment2.R;
 
 import java.util.ArrayList;
 
 /**
- * Created by Fahad on 7/05/2016.
+ * Created by Fahad on 8/05/2016.
  */
-public class CollectionsAdapter extends ArrayAdapter<String> {
+public class ClippingsAdapter extends ArrayAdapter<Clipping>{
 
     private Context context;
-    private CollectionListFragment fragementList;
+    private ClippingListFragment fragementList;
 
-    public CollectionsAdapter(Context context, ArrayList<String> list,CollectionListFragment fragementList)
+    public ClippingsAdapter(Context context, ArrayList<Clipping> list, ClippingListFragment fragementList)
     {
         super(context,-1,list);
         this.context = context;
@@ -31,30 +34,39 @@ public class CollectionsAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView first;
+        ImageView imageView;
         Button button;
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.collections_row, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.clippings_row, parent, false);
             first = (TextView) convertView.findViewById(android.R.id.text1);
-            button = (Button) convertView.findViewById(R.id.deleteCollectionButton);
-            convertView.setTag(new ViewHolder(first,button));
+            imageView = (ImageView) convertView.findViewById(R.id.clippingImage);
+            button = (Button) convertView.findViewById(R.id.deleteClippingButton);
+            convertView.setTag(new ViewHolder(first,button,imageView));
         } else {
             ViewHolder viewHolder = (ViewHolder) convertView.getTag();
             first = viewHolder.name;
+            imageView = viewHolder.imageView;
             button = viewHolder.button;
         }
 
-        final String collectionName = getItem(position);
-        first.setText(collectionName);
+        final Clipping clipping = getItem(position);
+        first.setText(clipping.getNotes());
         first.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                fragementList.gotToACollection(collectionName);
+                fragementList.gotToAClipping(clipping);
             }
         });
 
+        Drawable image = clipping.getImage();
+        if(image != null) {
+            imageView.setImageDrawable(image);
+        }
+
+
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                fragementList.deleteCollectionPopup(collectionName);
+                fragementList.deleteClippingPopup(clipping);
             }
         });
 
@@ -64,12 +76,14 @@ public class CollectionsAdapter extends ArrayAdapter<String> {
     private static class ViewHolder
     {
         public final TextView name;
+        public final ImageView imageView;
         public final Button button;
 
-        public ViewHolder(TextView name, Button button)
+        public ViewHolder(TextView name,Button button, ImageView image)
         {
             this.name = name;
             this.button = button;
+            this.imageView = image;
         }
     }
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="140px"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="1"
+    android:background="@drawable/list_rows">
+
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:id="@+id/clippingImage"
+            android:scaleType="centerCrop" />
+
+
+
+            <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@android:id/text1"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_weight="0.6"
+                android:scrollHorizontally="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:gravity="center_vertical" />
+
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="Delete"
+        android:id="@+id/deleteClippingButton"
+        android:textColor="#ffffff"
+        android:textStyle="italic"
+        android:background="#ff0000"
+        android:layout_weight="0.2"
+        android:layout_gravity="right"
+        android:textSize="35px" />
+
+
+</LinearLayout>
