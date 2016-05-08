@@ -10,6 +10,16 @@
     tools:context="com.example.fahad.assignment2.MainActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:background="#c7c7c7"
+        android:textAlignment="center"
+        android:textSize="60px"
+        android:textStyle="bold|italic"
+        android:typeface="serif"
+        android:layout_marginBottom="20px" />
 
     <FrameLayout
         android:id="@+id/frames"

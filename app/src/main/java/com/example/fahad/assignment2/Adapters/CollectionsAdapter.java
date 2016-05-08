@@ -52,11 +52,18 @@ public class CollectionsAdapter extends ArrayAdapter<String> {
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                fragementList.deleteCollectionPopup(collectionName);
-            }
-        });
+        if(collectionName == "All Clippings")
+        {
+            button.setVisibility(View.GONE);
+        }
+        else
+        {
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    fragementList.deleteCollectionPopup(collectionName);
+                }
+            });
+        }
 
         return convertView;
     }

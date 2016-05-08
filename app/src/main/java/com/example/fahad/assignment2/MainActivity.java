@@ -121,9 +121,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void addCollectionListFragment(ArrayList<String> names)
     {
+        names.add(0,"All Clippings");
         Bundle bundle = new Bundle();
         bundle.putStringArrayList("Collections",names);
         this.collectionList.setArguments(bundle);
+
+        TextView textView = (TextView) findViewById(R.id.header);
+        textView.setText("Collections");
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -143,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("parentCollection",parentCollection);
         this.clippingList.setArguments(bundle);
 
+        TextView textView = (TextView) findViewById(R.id.header);
+        textView.setText(parentCollection == "All Clippings" ? parentCollection : "Collection "+parentCollection);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frames, clippingList);
@@ -155,6 +162,9 @@ public class MainActivity extends AppCompatActivity {
         bundle.putSerializable("Clippings", clipping);
         ClippingDetailsFragment clippingDetailsFragment = new ClippingDetailsFragment();
         clippingDetailsFragment.setArguments(bundle);
+
+        TextView textView = (TextView) findViewById(R.id.header);
+        textView.setText("Clipping Created: "+clipping.getDateCreated());
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

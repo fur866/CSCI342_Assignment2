@@ -51,9 +51,6 @@ public class ClippingListFragment extends Fragment{
             }
         });
 
-        TextView textView = (TextView) view.findViewById(R.id.header);
-        textView.setText(this.parentCollection == "All Clippings" ? this.parentCollection : "Collection "+this.parentCollection);
-
         this.itemsAdapter = new ClippingsAdapter(getContext(),this.items,this);
 
         ListView listView = (ListView) view.findViewById(R.id.listView);

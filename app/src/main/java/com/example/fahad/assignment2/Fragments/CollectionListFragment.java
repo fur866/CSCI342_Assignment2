@@ -49,8 +49,6 @@ public class CollectionListFragment extends Fragment{
             }
         });
 
-        TextView textView = (TextView) view.findViewById(R.id.header);
-        textView.setText("Collections");
 
         ListView listView = (ListView) view.findViewById(R.id.listView);
         listView.setAdapter(itemsAdapter);
