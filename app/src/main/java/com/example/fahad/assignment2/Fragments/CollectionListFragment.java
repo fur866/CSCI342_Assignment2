@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.fahad.assignment2.Adapters.CollectionsAdapter;
 import com.example.fahad.assignment2.Database.ConvenienceClasses.ScrapbookModel;
@@ -124,6 +123,11 @@ public class CollectionListFragment extends Fragment{
 
     public void gotToACollection(String name)
     {
-        this.mCallback.addClippingsFragment(name);
+        this.mCallback.showClippingsFragment(name);
+    }
+
+    public void isChanged()
+    {
+        this.itemsAdapter.notifyDataSetChanged();
     }
 }

@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 import com.example.fahad.assignment2.Database.ContractClasses.ClippingContract;
 import com.example.fahad.assignment2.Database.ContractClasses.CollectionContract;
@@ -131,15 +132,15 @@ public class ScrapbookModel {
             outStream.close();
 
         } catch (IOException e) {
+            Log.d("Here","In Exception: "+String.valueOf(e));
             System.out.println(e);
         }
 
         SQLiteDatabase db = this.dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(ClippingContract.ClippingEntry.COLUMN_NAME_NOTES, notes);
-        contentValues.put(ClippingContract.ClippingEntry.COLUMN_NAME_DATE_CREATED, dateCreated);
-        contentValues.put(ClippingContract.ClippingEntry.COLUMN_NAME_COLLECTION_NAME, cName);
         contentValues.put(ClippingContract.ClippingEntry.COLUMN_NAME_PATH, path);
+        contentValues.put(ClippingContract.ClippingEntry.COLUMN_NAME_DATE_CREATED, dateCreated);
         return db.insert(ClippingContract.ClippingEntry.TABLE_NAME,null, contentValues);
     }
 

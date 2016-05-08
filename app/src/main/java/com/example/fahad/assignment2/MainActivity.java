@@ -13,6 +13,7 @@ import com.example.fahad.assignment2.Database.DataClasses.Clipping;
 import com.example.fahad.assignment2.Database.DataClasses.Collection;
 import com.example.fahad.assignment2.Database.HelperClasses.DatabaseHelper;
 import com.example.fahad.assignment2.Database.ConvenienceClasses.ScrapbookModel;
+import com.example.fahad.assignment2.Fragments.AddClippingFragment;
 import com.example.fahad.assignment2.Fragments.ClippingDetailsFragment;
 import com.example.fahad.assignment2.Fragments.ClippingListFragment;
 import com.example.fahad.assignment2.Fragments.CollectionListFragment;
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("HERE date3",clipping.getDateCreated());
             Log.d("HERE path3",clipping.getPath());
         }*/
-        getApplicationContext().deleteDatabase(DatabaseHelper.DATABASE_NAME);
+       // getApplicationContext().deleteDatabase(DatabaseHelper.DATABASE_NAME);
     }
 
     public void addCollectionListFragment(ArrayList<String> names)
@@ -135,10 +136,11 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void addClippingsFragment(String parentCollection)
+    public void showClippingsFragment(String parentCollection)
     {
         Bundle bundle = new Bundle();
         if(parentCollection != "All Clippings") {
+            Log.d("Here 1",String.valueOf(this.scrapbookModel.getClippingsByCollection(parentCollection).size()));
             bundle.putSerializable("Clippings", this.scrapbookModel.getClippingsByCollection(parentCollection));
         }
         else{
@@ -170,5 +172,34 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frames, clippingDetailsFragment);
         fragmentTransaction.commit();
+    }
+
+    public void addClipping(String parentCollection)
+    {
+        Bundle bundle = new Bundle();
+        bundle.putString("parentCollection",parentCollection);
+        AddClippingFragment addClippingFragment = new AddClippingFragment();
+        addClippingFragment.setArguments(bundle);
+
+        TextView textView = (TextView) findViewById(R.id.header);
+        textView.setText("Add Clipping");
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frames, addClippingFragment);
+        fragmentTransaction.commit();
+    }
+
+    public void saveClipping(Clipping clipping,String parent)
+    {
+        Clipping cp1 = this.scrapbookModel.createClipping(clipping.getNotes(),clipping.getDateCreated(),clipping.getImage());
+        if(parent != "") {
+            this.scrapbookModel.assignClipping(cp1.getID(), parent);
+        }
+    }
+
+    public void deleteClipping(long id)
+    {
+        this.scrapbookModel.deleteClipping(id);
     }
 }
