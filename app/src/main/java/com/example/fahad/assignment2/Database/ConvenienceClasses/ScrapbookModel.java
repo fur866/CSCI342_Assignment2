@@ -293,7 +293,7 @@ public class ScrapbookModel {
             String id = cursor.getString(cursor.getColumnIndex(ClippingContract.ClippingEntry.COLUMN_NAME_CLIPPING_ID));
             String name = cursor.getString(cursor.getColumnIndex(ClippingContract.ClippingEntry.COLUMN_NAME_COLLECTION_NAME));
 
-            if((collectionName.length() > 0 && name == collectionName) || collectionName.length() == 0){
+            if((collectionName.length() > 0 && name.contentEquals(collectionName)) || collectionName.length() == 0){
                 Bitmap bitmap = BitmapFactory.decodeFile(path);
                 Drawable image = new BitmapDrawable(this.context.getResources(), bitmap);
 
@@ -304,22 +304,6 @@ public class ScrapbookModel {
         }
         cursor.close();
         return clippings;
-    }
-
-    boolean isTableExists(SQLiteDatabase db, String tableName)
-    {
-        if (tableName == null || db == null || !db.isOpen())
-        {
-            return false;
-        }
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM sqlite_master WHERE type = ? AND name = ?", new String[] {"table", tableName});
-        if (!cursor.moveToFirst())
-        {
-            return false;
-        }
-        int count = cursor.getInt(0);
-        cursor.close();
-        return count > 0;
     }
 
     public static Bitmap drawableToBitmap (Drawable drawable) {

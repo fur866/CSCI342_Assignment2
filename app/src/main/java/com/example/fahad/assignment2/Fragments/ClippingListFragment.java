@@ -10,12 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.fahad.assignment2.Adapters.ClippingsAdapter;
-import com.example.fahad.assignment2.Database.ConvenienceClasses.ScrapbookModel;
 import com.example.fahad.assignment2.Database.DataClasses.Clipping;
 import com.example.fahad.assignment2.MainActivity;
 import com.example.fahad.assignment2.R;
@@ -105,4 +102,15 @@ public class ClippingListFragment extends Fragment{
         this.mCallback.showClipping(clipping);
     }
 
+    public String getParentCollection()
+    {
+        return this.parentCollection;
+    }
+
+    public void changeList(ArrayList<Clipping> clippings)
+    {
+        this.itemsAdapter.clear();
+        this.itemsAdapter.addAll(clippings);
+        this.itemsAdapter.notifyDataSetChanged();
+    }
 }

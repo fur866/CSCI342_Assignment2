@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -18,15 +17,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.example.fahad.assignment2.Database.ConvenienceClasses.ScrapbookModel;
 import com.example.fahad.assignment2.Database.DataClasses.Clipping;
 import com.example.fahad.assignment2.MainActivity;
 import com.example.fahad.assignment2.R;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by Fahad on 8/05/2016.

@@ -126,8 +126,4 @@ public class CollectionListFragment extends Fragment{
         this.mCallback.showClippingsFragment(name);
     }
 
-    public void isChanged()
-    {
-        this.itemsAdapter.notifyDataSetChanged();
-    }
 }
