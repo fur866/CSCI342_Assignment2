@@ -13,6 +13,7 @@ import com.example.fahad.assignment2.Database.DataClasses.Clipping;
 import com.example.fahad.assignment2.Database.DataClasses.Collection;
 import com.example.fahad.assignment2.Database.HelperClasses.DatabaseHelper;
 import com.example.fahad.assignment2.Database.ConvenienceClasses.ScrapbookModel;
+import com.example.fahad.assignment2.Fragments.ClippingDetailsFragment;
 import com.example.fahad.assignment2.Fragments.ClippingListFragment;
 import com.example.fahad.assignment2.Fragments.CollectionListFragment;
 
@@ -145,6 +146,19 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frames, clippingList);
+        fragmentTransaction.commit();
+    }
+
+    public void showClipping(Clipping clipping)
+    {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Clippings", clipping);
+        ClippingDetailsFragment clippingDetailsFragment = new ClippingDetailsFragment();
+        clippingDetailsFragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frames, clippingDetailsFragment);
         fragmentTransaction.commit();
     }
 }

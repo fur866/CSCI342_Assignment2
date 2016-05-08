@@ -1,5 +1,6 @@
 package com.example.fahad.assignment2.Fragments;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.example.fahad.assignment2.Adapters.ClippingsAdapter;
 import com.example.fahad.assignment2.Database.ConvenienceClasses.ScrapbookModel;
 import com.example.fahad.assignment2.Database.DataClasses.Clipping;
+import com.example.fahad.assignment2.MainActivity;
 import com.example.fahad.assignment2.R;
 
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class ClippingListFragment extends Fragment{
     private ArrayList<Clipping> items;
     private String parentCollection;
     private ClippingsAdapter itemsAdapter;
+    private MainActivity mCallback;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -112,8 +115,20 @@ public class ClippingListFragment extends Fragment{
         alert.show();
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            this.mCallback = (MainActivity) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
+    }
+
     public void gotToAClipping(Clipping clipping)
     {
-        //this.mCallback.addClippingsFragment(name);
+        this.mCallback.showClipping(clipping);
     }
 }
